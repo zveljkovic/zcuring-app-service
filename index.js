@@ -2,7 +2,7 @@ const express = require('express')
 const fs = require("fs");
 const path = require("path");
 const app = express();
-import { Pool } from 'pg';
+const { Pool } = require('pg');
 
 
 const ipFilePath = process.env.IP_FILE_PATH || path.join(__dirname, 'ip.txt').toString();
