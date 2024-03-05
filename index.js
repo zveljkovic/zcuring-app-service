@@ -25,14 +25,14 @@ app.get('/ip', (req, res) => {
     res.json({ip: fs.readFileSync(ipFilePath).toString()});
 });
 
-app.post('/send-stats', async (req, res) => {
+app.post('/stats', async (req, res) => {
     if (req.header('authorization') !== authToken) {
         throw new Error('Auth token invalid')
     }
 
-
     await pool.query(`insert into stats (created_at, current_temperature, current_humidity, target_temperature, target_humidity)
-                      values (NOW(), ${req.body.currentTemperture}, ${req.body.currentHumidity}, ${req.body.targetTemperature}, ${req.body.targetHumidity})`);
+                      values (NOW(), ${req.body.currentTemperature}, ${req.body.currentHumidity}, ${req.body.targetTemperature}, ${req.body.targetHumidity})`);
+
     res.json({status: "ok"});
 });
 
