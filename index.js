@@ -31,7 +31,7 @@ app.post('/stats', async (req, res) => {
     }
 
     await pool.query(`insert into stats (created_at, current_temperature, current_humidity, target_temperature, target_humidity, fridgeState, humidifierState, dehumidifierState)
-                      values (NOW(), ${req.body.currentTemperature}, ${req.body.currentHumidity}, ${req.body.targetTemperature}, ${req.body.fridgeState}, ${req.body.humidifierState}, ${req.body.targetHumidity}, ${req.body.dehumidifierState})`);
+                      values (NOW(), ${req.body.currentTemperature}, ${req.body.currentHumidity}, ${req.body.targetTemperature}, ${req.body.targetHumidity}, ${req.body.fridgeState}, ${req.body.humidifierState}, ${req.body.dehumidifierState})`);
 
     res.json({status: "ok"});
 });
