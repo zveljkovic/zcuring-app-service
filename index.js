@@ -32,7 +32,6 @@ app.post('/stats', async (req, res) => {
 
     const sql = `insert into stats (created_at, current_temperature, current_humidity, target_temperature, target_humidity, fridgeState, humidifierState, dehumidifierState)
                       values (NOW(), ${req.body.currentTemperature}, ${req.body.currentHumidity}, ${req.body.targetTemperature}, ${req.body.targetHumidity}, ${req.body.fridgeState}, ${req.body.humidifierState}, ${req.body.dehumidifierState})`;
-    console.log(sql);
     await pool.query(sql);
     res.json({status: "ok"});
 });
